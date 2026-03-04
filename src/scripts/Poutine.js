@@ -26,9 +26,7 @@ export default class Poutine {
 
   updatePhoto() {
     const image = this.element.querySelector('.poutine__image');
-
     image.classList.add('is-active');
-
     image.src = 'assets/images/' + this.selectedType + '.png';
   }
 }
