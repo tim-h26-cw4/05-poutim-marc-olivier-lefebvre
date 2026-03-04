@@ -4,7 +4,7 @@ export default class Chef {
   constructor(element) {
     this.element = element;
     this.menu = [];
-    this.container = document.querySelector('.js-container');
+    this.container = this.element.querySelector('.chef__order');
     this.init();
   }
 
@@ -19,11 +19,20 @@ export default class Chef {
 
     const orderButton = this.element.querySelector('.button-secondary');
     orderButton.addEventListener('click', this.sendOrder.bind(this));
-
-    console.log(this.menu);
   }
 
-  sendOrder(event) {
-    console.log('Commande envoyée');
+  sendOrder() {
+    let total = 0;
+
+    for (let i = 0; i < this.menu.length; i++) {
+      if (this.menu[i].selectedType !== '') {
+        total++;
+      }
+    }
+
+    this.container.innerHTML = '';
+    const p = document.createElement('p');
+    p.textContent = 'Nombre total de poutine(s) : ' + total;
+    this.container.appendChild(p);
   }
 }
